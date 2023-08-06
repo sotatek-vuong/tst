@@ -115,7 +115,7 @@ function init() {
 
 	var colors = ["#ff0000", "#ff0000", "#00ff00", "#0000ff", "#ff00ff"];
 	for (var i = 0; i < 3; i++) {
-		var die = new DiceD6({ size: 2, backColor: '#fff' });
+		var die = new DiceD6({ size: 1.5, backColor: "#fff" });
 		scene.add(die.getObject());
 		dice.push(die);
 	}
@@ -125,9 +125,9 @@ function init() {
 
 		for (var i = 0; i < dice.length; i++) {
 			let yRand = Math.random() * 20;
-			dice[i].getObject().position.x =0// -15 - (i % 3) * 2;
-			dice[i].getObject().position.y = 10 //2 + Math.floor(i / 3) * 2;
-			dice[i].getObject().position.z = 0 //-15 + (i % 3) * 2;
+			dice[i].getObject().position.x = -15 - (i % 3) * 1.5;
+			dice[i].getObject().position.y = 2 + Math.floor(i / 3) * 1.5;
+			dice[i].getObject().position.z = -15 + (i % 3) * 1.5;
 			dice[i].getObject().quaternion.x =
 				((Math.random() * 90 - 45) * Math.PI) / 180;
 			dice[i].getObject().quaternion.z =
@@ -148,9 +148,7 @@ function init() {
 			diceValues.push({ dice: dice[i], value: i + 1 });
 		}
 
-		try {
-			DiceManager.prepareValues(diceValues);
-		} catch (err) {}
+		DiceManager.prepareValues(diceValues);
 	}
 
 	document
